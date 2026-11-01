@@ -10,8 +10,7 @@ Ready-to-paste texts and answers for App Store Connect (language: Dutch). Charac
 - [ ] The app shows a beta notice because the lessons are unreviewed drafts. Apple does not accept beta
       versions in the App Store (guideline 2.2): release through **TestFlight** first, or have the lessons
       reviewed (see `CONTENT_REVIEW_CHECKLIST.md`) before App Store review.
-- [ ] Put the support and privacy pages online (GitHub Pages, below) and replace the **TODO** placeholders
-      in `docs/privacy.html` and `docs/support.html`.
+- [ ] Put the support and privacy pages online (GitHub Pages, below).
 - [ ] Have the NBG permission letter ready: App Review may ask for proof of the right to use the BGT
       (guideline 5.2). Do not put it in the repository.
 
@@ -29,7 +28,7 @@ Ready-to-paste texts and answers for App Store Connect (language: Dutch). Charac
 | Support URL | `https://viralistic.github.io/moral-fuel-app/support.html` |
 | Privacy policy URL | `https://viralistic.github.io/moral-fuel-app/privacy.html` |
 | Marketing URL (optional) | `https://viralistic.github.io/moral-fuel-app/` |
-| Copyright | `2026 TODO naam of bedrijf` |
+| Copyright | `2026 Viralistic` |
 
 The URLs work once GitHub Pages is on: repository **Settings > Pages > Deploy from a branch**, branch `main`,
 folder `/docs`.
@@ -105,7 +104,7 @@ Store Connect yourself.
 ## App Review information
 
 - Sign-in required: **No**.
-- Contact: TODO name, phone and e-mail.
+- Contact: TODO your name and phone number; e-mail `info@viralistic.nl`.
 - Notes:
 
 ```
@@ -126,7 +125,7 @@ What to Test:
 Doorloop de introductie en een paar lessen. Probeer het dagboek, een herinnering en een widget. Let op teksten die onduidelijk zijn en op alles wat niet werkt zoals je verwacht.
 ```
 
-Feedback e-mail: TODO
+Feedback e-mail: `info@viralistic.nl`
 
 ## Screenshots
 
