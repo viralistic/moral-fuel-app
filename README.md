@@ -134,4 +134,4 @@ streaks. The rules and the designer's mockups are in `styling/`.
 - One lesson length for all time preferences (see AGENTS.md).
 - Reminders are not available on the web; the journal is not saved on the web.
 - An Expo account (and Apple Developer membership for iPhones) is still needed for EAS development builds.
-- The app icon is still the Expo template's placeholder (the splash shows the logo).
+- App Store release: see `store/APP_STORE_LISTING.md` (texts, privacy answers and the checklist before submitting).

@@ -19,7 +19,8 @@ anything, and update it when a decision changes.
 | Reminders | Real local daily notification through expo-notifications at a suggested or custom time; permission asked only when the user picks a time; `syncReminder` cancels and reschedules on every change and launch | No duplicates and no reminder that pretends to be active: without permission the preference falls back to off. Not offered on web. |
 | Language | Dutch default; `LocalizedContent<T>` = `{ nl: T, en?: T }`, resolved only by `localize()` | English can be added by adding `en` text; screens need no change. |
 | Lesson length | One complete version per lesson (3–5 min, computed from the text), not separate 2/5/10-minute versions | Shortening would cut essential context. The time preference shows a pace hint and progress is saved per step, so a lesson can be spread over moments. |
-| Builds | Expo Go for quick runs; `expo-dev-client` and `eas.json` profiles for beta builds | Identifiers: `com.moralfuel.app` on iOS and Android (chosen by the owner; permanent once published). |
+| Builds | Expo Go for quick runs; `expo-dev-client` and `eas.json` profiles for beta builds; `production` profile for the App Store | Identifiers: `com.moralfuel.app` on iOS and Android (chosen by the owner; permanent once published). |
+| App Store | Free, iPhone only (`supportsTablet: false`), `usesNonExemptEncryption: false` (on-device journal encryption only); listing texts in `store/APP_STORE_LISTING.md`, privacy and support pages in `docs/` (GitHub Pages) | No iPad screenshots or layout work needed; the privacy pages must stay true to what the app does: update them when data handling changes. |
 | Progress | Lessons can be opened in any order, any day; no streaks | Never block learning because a day was missed. |
 | Branding | Dark-only theme (charcoal, white, one ember accent), Tomorrow headings, Poppins text, SVG logotype, branded loader; rules in `styling/STYLE_GUIDE.md` | Set by the designer (owner). The mockups' content (streaks, chat, accounts) is not adopted; only their style. |
 | Completion | A learning event in the app only | Never requires prayer or writing; never claims spiritual improvement. |
@@ -67,6 +68,8 @@ src/
   features/launch/     the branded loader shown after the native splash
   content/media.ts     the photo library (assets/images/media) with alt text
 styling/               STYLE_GUIDE.md and the designer's reference mockups
+store/                 App Store Connect texts and answers
+docs/                  public privacy, support and home pages (GitHub Pages)
 ```
 
 Funnels — every read or write of one kind goes through its owner:

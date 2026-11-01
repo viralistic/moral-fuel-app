@@ -1,0 +1,64 @@
+/* The app's look (styling/STYLE_GUIDE.md) for the public support and privacy pages. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Tomorrow:wght@600&display=swap');
+
+:root {
+  color-scheme: dark;
+  --bg: #1f1e1f;
+  --surface: #262526;
+  --border: #3a393a;
+  --text: #ffffff;
+  --muted: #a3a1a3;
+  --ember: #e2572b;
+  --ember-text: #ee7748;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 300 16px/1.65 Poppins, system-ui, -apple-system, sans-serif;
+}
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px max(20px, env(safe-area-inset-right)) 64px max(20px, env(safe-area-inset-left));
+}
+
+.brand {
+  margin: 0 0 8px;
+  font: 500 12px/1 Poppins, system-ui, sans-serif;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+h1, h2, h3 {
+  font-family: Tomorrow, 'Arial Narrow', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+h1 { font-size: 34px; margin: 0 0 12px; }
+h2 { font-size: 21px; margin: 40px 0 8px; }
+h3 { font-size: 17px; margin: 24px 0 4px; }
+
+p, li { color: var(--muted); }
+strong { color: var(--text); font-weight: 500; }
+.lead { color: var(--text); font-size: 18px; }
+.meta { font-size: 13px; margin: 0 0 28px; }
+
+ul { padding-left: 1.2em; }
+li { margin: 6px 0; }
+li::marker { color: var(--ember); }
+
+a { color: var(--ember-text); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+
+hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0 0; }
+
+.todo { color: var(--ember-text); font-weight: 500; }
+.foot { margin-top: 48px; font-size: 14px; }
