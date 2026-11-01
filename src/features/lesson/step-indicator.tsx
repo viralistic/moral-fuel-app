@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { LESSON_STEP_COUNT } from '@/features/progress/progress';
 import { useStrings } from '@/state/app-state';
-import { radius, spacing } from '@/theme/tokens';
+import { fonts, radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/use-theme';
 import { AppText } from '@/ui/text';
 
@@ -21,7 +21,7 @@ export function StepIndicator({ step }: { step: number }) {
         const reached = index <= step;
         return (
           <View key={label} style={styles.part}>
-            <View style={[styles.bar, { backgroundColor: reached ? colors.primary : colors.sageSoft }]} />
+            <View style={[styles.bar, { backgroundColor: reached ? colors.primary : colors.border }]} />
             <AppText variant="caption" tone={index === step ? 'default' : 'muted'} style={index === step && styles.current}>
               {label}
             </AppText>
@@ -36,5 +36,5 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', gap: spacing.xs },
   part: { flex: 1, gap: spacing.xxs },
   bar: { height: 5, borderRadius: radius.pill },
-  current: { fontWeight: '700' },
+  current: { fontFamily: fonts.semibold },
 });

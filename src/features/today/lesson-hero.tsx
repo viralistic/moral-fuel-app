@@ -31,15 +31,15 @@ export function LessonHero({ day, progress, dailyMinutes }: Props) {
   const showPace = !!dailyMinutes && !!day.readingMinutes && dailyMinutes < day.readingMinutes;
 
   return (
-    <Card tone="primary" style={styles.card}>
-      <AppText variant="overline" tone="onPrimaryMuted">
+    <Card tone="feature" style={styles.card}>
+      <AppText variant="overline" tone="muted">
         {resuming ? strings.today.resumeLesson : strings.today.newLesson}
       </AppText>
-      <AppText variant="title" tone="onPrimary">
+      <AppText variant="title">
         {day.title}
       </AppText>
-      <AppText tone="onPrimaryMuted">{day.summary}</AppText>
-      <AppText variant="caption" tone="onPrimaryMuted">
+      <AppText tone="muted">{day.summary}</AppText>
+      <AppText variant="caption" tone="muted">
         {[day.passage, day.readingMinutes ? strings.common.minutes(day.readingMinutes) : null].filter(Boolean).join(' · ')}
       </AppText>
       {resuming ? (
@@ -48,13 +48,12 @@ export function LessonHero({ day, progress, dailyMinutes }: Props) {
             value={step - 1}
             max={LESSON_STEP_COUNT}
             label={strings.common.stepOf(step, LESSON_STEP_COUNT)}
-            onPrimary
           />
         </View>
       ) : null}
       <View style={styles.cta}>
         <Button
-          variant="onPrimary"
+          variant="primary"
           label={resuming ? strings.today.resume(step) : strings.today.start}
           icon="chevronRight"
           onPress={() => day.lessonId && openLesson(day.lessonId)}
@@ -67,14 +66,14 @@ export function LessonHero({ day, progress, dailyMinutes }: Props) {
           onPress={() => router.push({ pathname: '/bible/[lessonId]', params: { lessonId: day.lessonId! } })}
           hitSlop={8}
           style={({ pressed }) => [styles.read, pressed && styles.pressed]}>
-          <Icon name="book" size={18} color={colors.onPrimary} />
-          <AppText variant="bodyStrong" tone="onPrimary">
+          <Icon name="book" size={18} color={colors.accent} />
+          <AppText variant="bodyStrong">
             {strings.bible.read}
           </AppText>
         </Pressable>
       ) : null}
       {showPace ? (
-        <AppText variant="caption" tone="onPrimaryMuted">
+        <AppText variant="caption" tone="muted">
           {strings.today.pace(day.readingMinutes!, dailyMinutes!)}
         </AppText>
       ) : null}

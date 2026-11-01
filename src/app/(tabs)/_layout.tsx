@@ -17,9 +17,11 @@ export default function TabLayout() {
   const { colors } = useTheme();
   return (
     <NativeTabs
-      tintColor={colors.primary}
-      backgroundColor={colors.background}
-      labelStyle={{ color: colors.textMuted }}>
+      tintColor={colors.text}
+      iconColor={{ default: colors.textMuted, selected: colors.text }}
+      indicatorColor={colors.surfaceMuted}
+      backgroundColor={colors.surface}
+      labelStyle={{ default: { color: colors.textMuted }, selected: { color: colors.text } }}>
       {TABS.map((tab) => (
         <NativeTabs.Trigger key={tab.name} name={tab.name} contentStyle={{ backgroundColor: colors.background }}>
           <NativeTabs.Trigger.Label>{strings.tabs[tab.label]}</NativeTabs.Trigger.Label>

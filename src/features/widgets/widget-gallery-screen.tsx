@@ -4,7 +4,7 @@ import { Platform, Pressable, ScrollView, StyleSheet, Switch, View } from 'react
 import type { Edge } from 'react-native-safe-area-context';
 
 import { useAppState, useStrings } from '@/state/app-state';
-import { radius, spacing } from '@/theme/tokens';
+import { fonts, radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/use-theme';
 import { Badge } from '@/ui/badge';
 import { Card } from '@/ui/card';
@@ -153,6 +153,6 @@ const styles = StyleSheet.create({
   note: { flexDirection: 'row', gap: spacing.xs, alignItems: 'flex-start' },
   step: { flexDirection: 'row', gap: spacing.md, alignItems: 'flex-start' },
   stepNumber: { width: 28, height: 28, borderRadius: radius.pill, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center' },
-  stepNumberText: { fontWeight: '600' },
+  stepNumberText: { fontFamily: fonts.semibold },
   flex: { flex: 1 },
 });

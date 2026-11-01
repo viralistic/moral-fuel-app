@@ -26,8 +26,8 @@ export function OptionRow({ title, description, selected, onPress }: OptionProps
       style={({ pressed }) => [
         styles.option,
         {
-          backgroundColor: selected ? colors.sageSoft : colors.surface,
-          borderColor: selected ? colors.primary : colors.border,
+          backgroundColor: selected ? colors.selected : colors.surface,
+          borderColor: selected ? colors.accent : colors.border,
         },
         pressed && styles.pressed,
       ]}>
@@ -39,7 +39,7 @@ export function OptionRow({ title, description, selected, onPress }: OptionProps
           </AppText>
         ) : null}
       </View>
-      <Icon name={selected ? 'checkCircle' : 'circle'} size={22} color={selected ? colors.primary : colors.border} />
+      <Icon name={selected ? 'checkCircle' : 'circle'} size={22} color={selected ? colors.accent : colors.borderStrong} />
     </Pressable>
   );
 }
@@ -56,8 +56,8 @@ export function Chip({ label, selected, onPress }: { label: string; selected: bo
       style={({ pressed }) => [
         styles.chip,
         {
-          backgroundColor: selected ? colors.primary : colors.surface,
-          borderColor: selected ? colors.primary : colors.border,
+          backgroundColor: selected ? colors.primary : 'transparent',
+          borderColor: selected ? colors.primary : colors.borderStrong,
         },
         pressed && styles.pressed,
       ]}>

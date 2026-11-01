@@ -98,7 +98,7 @@ export function LearnStep({ title, passage, related, step, language }: LearnStep
         <View
           accessible
           accessibilityLabel={`${strings.lesson.care}. ${step.careNote}`}
-          style={[styles.care, { backgroundColor: colors.sageSoft }]}>
+          style={[styles.care, { backgroundColor: colors.surfaceMuted }]}>
           <View style={styles.iconTitle}>
             <Icon name="heart" size={18} color={colors.primary} />
             <AppText variant="bodyStrong">{strings.lesson.care}</AppText>

@@ -6,8 +6,8 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "moralfuel",
-    "userInterfaceStyle": "automatic",
-    "backgroundColor": "#F7F4ED",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#1F1E1F",
     "ios": {
       "icon": "./assets/expo.icon",
       "supportsTablet": true,
@@ -32,12 +32,12 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#F7F4ED",
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76,
+          "backgroundColor": "#1F1E1F",
+          "image": "./assets/images/splash-logo.png",
+          "imageWidth": 220,
           "dark": {
-            "backgroundColor": "#121815",
-            "image": "./assets/images/splash-icon.png"
+            "backgroundColor": "#1F1E1F",
+            "image": "./assets/images/splash-logo.png"
           }
         }
       ],

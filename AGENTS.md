@@ -21,6 +21,7 @@ anything, and update it when a decision changes.
 | Lesson length | One complete version per lesson (3–5 min, computed from the text), not separate 2/5/10-minute versions | Shortening would cut essential context. The time preference shows a pace hint and progress is saved per step, so a lesson can be spread over moments. |
 | Builds | Expo Go for quick runs; `expo-dev-client` and `eas.json` profiles for beta builds | Identifiers: `com.moralfuel.app` on iOS and Android (chosen by the owner; permanent once published). |
 | Progress | Lessons can be opened in any order, any day; no streaks | Never block learning because a day was missed. |
+| Branding | Dark-only theme (charcoal, white, one ember accent), Tomorrow headings, Poppins text, SVG logotype, branded loader; rules in `styling/STYLE_GUIDE.md` | Set by the designer (owner). The mockups' content (streaks, chat, accounts) is not adopted; only their style. |
 | Completion | A learning event in the app only | Never requires prayer or writing; never claims spiritual improvement. |
 
 ## Content and theology rules (binding)
@@ -61,8 +62,11 @@ src/
                        crypto.ts, journal-store.ts / .web.ts, legacy-reflections.ts / .web.ts
   i18n/                nl.ts (all UI text), strings.ts, localize.ts
   theme/               tokens.ts (palette, semantic light/dark colours, spacing, type), use-theme.ts
-  ui/                  primitives: AppText, Icon, Button, Screen, Card, OptionRow, Chip, ProgressBar,
-                       Badge, FadeIn/useReduceMotion, confirm
+  ui/                  primitives: AppText, Icon, Logo, Wordmark, Button, Screen, Card, OptionRow, Chip,
+                       ProgressBar, Badge, FadeIn/useReduceMotion, confirm
+  features/launch/     the branded loader shown after the native splash
+  content/media.ts     the photo library (assets/images/media) with alt text
+styling/               STYLE_GUIDE.md and the designer's reference mockups
 ```
 
 Funnels — every read or write of one kind goes through its owner:
@@ -71,7 +75,8 @@ Funnels — every read or write of one kind goes through its owner:
 - Localized text: `localize()`; UI text: `useStrings()`. No paragraphs hard-coded in components.
 - App state: `useAppState().actions`; the provider alone saves to storage and schedules reminders (`syncReminder`).
 - Journal and reflections: `useJournal().actions`; `JournalProvider` alone writes `journal-store`.
-- Colours: `useTheme()` semantic tokens; no raw hex in screens.
+- Colours and fonts: `useTheme()` semantic tokens and `fonts` from `tokens.ts`; no raw hex or `fontWeight` in screens.
+- Photos: `MEDIA` in `src/content/media.ts`; no direct `require` of an image in a screen.
 
 ## Widgets (iOS)
 
@@ -115,7 +120,7 @@ Run `npm run typecheck`, `npm run lint` and `npm test` before declaring work don
 
 - Keep route files thin and files small; extend an existing primitive or function before adding a second one.
 - Accessibility: touch targets ≥ 44 pt, roles, labels and states on every control, text that scales with the system font, no meaning by colour alone, reduced motion respected (`FadeIn`, `useReduceMotion`).
-- Design: calm, editorial, warm. Ivory, forest green, sage, gold, charcoal. Newsreader serif for headings. No streak pressure, gimmicks, crosses or dramatic religious imagery.
+- Design: follow `styling/STYLE_GUIDE.md`. Dark charcoal canvas, white type, a single ember accent used sparingly, Tomorrow for headings and Poppins for text, black-and-white photography. No streak pressure, gimmicks, crosses or dramatic religious imagery.
 - Content changes: edit `src/content`, then run the tests — `validate.test.ts` fails on any integrity problem.
 - Later CMS: replace the static imports in `src/content/index.ts` with a loader that returns the same `Lesson` and `Journey` types and runs `validateContent` on what it receives.
 - No secrets, credentials or `.env` are needed or allowed in Phase 1.

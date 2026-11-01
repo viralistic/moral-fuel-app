@@ -6,7 +6,7 @@ import { useTheme } from '@/theme/use-theme';
 import { Icon, type IconName } from './icon';
 import { AppText } from './text';
 
-type Variant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'onPrimary';
+type Variant = 'primary' | 'secondary' | 'ghost' | 'danger';
 
 interface ButtonProps extends Omit<PressableProps, 'children' | 'style'> {
   label: string;
@@ -19,10 +19,9 @@ export function Button({ label, variant = 'primary', icon, iconPosition = 'end',
   const { colors } = useTheme();
   const look = {
     primary: { bg: colors.primary, fg: colors.onPrimary, border: colors.primary },
-    secondary: { bg: 'transparent', fg: colors.text, border: colors.border },
+    secondary: { bg: 'transparent', fg: colors.text, border: colors.borderStrong },
     ghost: { bg: 'transparent', fg: colors.text, border: 'transparent' },
     danger: { bg: 'transparent', fg: colors.danger, border: colors.danger },
-    onPrimary: { bg: colors.onPrimary, fg: colors.primary, border: colors.onPrimary },
   }[variant];
   const iconNode = icon ? <Icon name={icon} size={18} color={look.fg} /> : null;
 

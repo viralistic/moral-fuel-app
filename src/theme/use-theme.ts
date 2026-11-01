@@ -1,8 +1,6 @@
-import { useColorScheme } from 'react-native';
+import { colors } from './tokens';
 
-import { darkColors, lightColors } from './tokens';
-
+/** The brand is dark-only, whatever the device setting; screens still read colors through here. */
 export function useTheme() {
-  const scheme = useColorScheme() === 'dark' ? 'dark' : 'light';
-  return { scheme, colors: scheme === 'dark' ? darkColors : lightColors } as const;
+  return { scheme: 'dark', colors } as const;
 }

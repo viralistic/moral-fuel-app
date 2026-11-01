@@ -66,7 +66,7 @@ function ChapterHeader({ order, title, description, days }: { order: number; tit
   return (
     <View style={[styles.chapter, { backgroundColor: colors.surfaceMuted }]}>
       <View style={styles.chapterTop}>
-        <AppText variant="display" tone="accent" style={styles.chapterNumber} accessible={false}>
+        <AppText variant="display" style={styles.chapterNumber} accessible={false}>
           {order}
         </AppText>
         <View style={styles.chapterText}>

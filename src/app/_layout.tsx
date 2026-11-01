@@ -1,12 +1,16 @@
-import { Newsreader_400Regular } from '@expo-google-fonts/newsreader/400Regular';
-import { Newsreader_400Regular_Italic } from '@expo-google-fonts/newsreader/400Regular_Italic';
-import { Newsreader_500Medium } from '@expo-google-fonts/newsreader/500Medium';
+import { Poppins_300Light } from '@expo-google-fonts/poppins/300Light';
+import { Poppins_300Light_Italic } from '@expo-google-fonts/poppins/300Light_Italic';
+import { Poppins_400Regular } from '@expo-google-fonts/poppins/400Regular';
+import { Poppins_500Medium } from '@expo-google-fonts/poppins/500Medium';
+import { Poppins_600SemiBold } from '@expo-google-fonts/poppins/600SemiBold';
+import { Tomorrow_600SemiBold } from '@expo-google-fonts/tomorrow/600SemiBold';
 import { useFonts } from 'expo-font';
-import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
+import { DarkTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
+import { LaunchScreen } from '@/features/launch/launch-screen';
 import { configureReminders } from '@/features/reminders/reminders';
 import { useWidgetSync } from '@/features/widgets/use-widget-sync';
 import { AppStateProvider, useAppState } from '@/state/app-state';
@@ -20,9 +24,12 @@ configureReminders();
 
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
-    [fonts.serifRegular]: Newsreader_400Regular,
-    [fonts.serif]: Newsreader_500Medium,
-    [fonts.serifItalic]: Newsreader_400Regular_Italic,
+    [fonts.display]: Tomorrow_600SemiBold,
+    [fonts.light]: Poppins_300Light,
+    [fonts.lightItalic]: Poppins_300Light_Italic,
+    [fonts.regular]: Poppins_400Regular,
+    [fonts.medium]: Poppins_500Medium,
+    [fonts.semibold]: Poppins_600SemiBold,
   });
   return (
     <AppStateProvider>
@@ -36,26 +43,35 @@ export default function RootLayout() {
 
 function RootNavigator({ fontsReady }: { fontsReady: boolean }) {
   const { ready, state } = useAppState();
-  const { scheme, colors } = useTheme();
+  const { colors } = useTheme();
   const reduceMotion = useReduceMotion();
-  const loaded = ready && fontsReady;
+  const [launched, setLaunched] = useState(false);
+  const finishLaunch = useCallback(() => setLaunched(true), []);
   useWidgetSync();
 
+  // The native splash shows the same logo until the fonts for the loader are in.
   useEffect(() => {
-    if (loaded) SplashScreen.hideAsync();
-  }, [loaded]);
+    if (fontsReady) SplashScreen.hideAsync();
+  }, [fontsReady]);
 
-  if (!loaded) return null;
+  if (!fontsReady) return null;
+  if (!launched) {
+    return (
+      <>
+        <StatusBar style="light" />
+        <LaunchScreen ready={ready} onDone={finishLaunch} />
+      </>
+    );
+  }
 
-  const base = scheme === 'dark' ? DarkTheme : DefaultTheme;
   const navigationTheme = {
-    ...base,
-    colors: { ...base.colors, background: colors.background, card: colors.background, primary: colors.primary, text: colors.text, border: colors.border },
+    ...DarkTheme,
+    colors: { ...DarkTheme.colors, background: colors.background, card: colors.background, primary: colors.accent, text: colors.text, border: colors.border },
   };
 
   return (
     <ThemeProvider value={navigationTheme}>
-      <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
+      <StatusBar style="light" />
       <Stack
         screenOptions={{
           headerShown: false,

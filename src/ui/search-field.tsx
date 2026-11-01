@@ -18,7 +18,7 @@ export function SearchField({ value, onChangeText, placeholder, clearLabel }: Pr
   const { colors } = useTheme();
   const [focused, setFocused] = useState(false);
   return (
-    <View style={[styles.field, { backgroundColor: colors.surface, borderColor: focused ? colors.primary : colors.border }]}>
+    <View style={[styles.field, { backgroundColor: 'transparent', borderColor: focused ? colors.accent : colors.borderStrong }]}>
       <Icon name="search" size={18} color={colors.textMuted} />
       <TextInput
         value={value}
@@ -32,7 +32,7 @@ export function SearchField({ value, onChangeText, placeholder, clearLabel }: Pr
         clearButtonMode="never"
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        style={[typography.body, styles.input, { color: colors.text }]}
+        style={[typography.body, styles.input, { fontSize: 15, color: colors.text }]}
       />
       {value ? (
         <Pressable accessibilityRole="button" accessibilityLabel={clearLabel} onPress={() => onChangeText('')} hitSlop={12}>

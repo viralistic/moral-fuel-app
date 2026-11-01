@@ -105,7 +105,7 @@ export function JournalScreen() {
 
           {journal.entries.length === 0 ? (
             <View style={[styles.empty, { borderColor: colors.border }]}>
-              <Icon name="journal" size={28} color={colors.sage} />
+              <Icon name="journal" size={28} color={colors.textMuted} />
               <AppText variant="heading">{strings.journal.emptyTitle}</AppText>
               <AppText tone="muted" style={styles.centerText}>
                 {strings.journal.emptyBody}

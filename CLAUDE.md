@@ -9,6 +9,14 @@ authorization and scripts. It is imported here; keep it updated instead of dupli
 
 ## Additions for Claude Code
 
+### Styling: read `styling/` before building UI
+
+When you make a new screen, component, widget or visual element, use `styling/STYLE_GUIDE.md` as the
+reference and match the mockups in `styling/reference/`. Build from the tokens in `src/theme/tokens.ts`
+and the primitives in `src/ui/` rather than new values. The mockups show style only: where their text,
+images or features differ from the app's content, keep the app's content and apply the style rules. If
+a design decision changes, update the style guide in the same change.
+
 ### Commands not listed in AGENTS.md
 
 ```bash

@@ -2,7 +2,13 @@ import type { DailyMinutes, InterestId } from '@/models/user';
 
 /** Dutch interface text. A translation provides the same shape (see Strings). */
 export const nl = {
-  brand: { name: 'MORAL FUEL', promise: 'Leer. Overdenk. Leef.' },
+  brand: {
+    name: 'MORAL FUEL',
+    promise: 'Leer. Overdenk. Leef.',
+    // The loader's tagline, taken as designed.
+    loaderTagline: 'Learn - Pray - Grow - Live',
+    loading: 'Moral Fuel wordt geladen',
+  },
   common: {
     continue: 'Doorgaan',
     back: 'Terug',

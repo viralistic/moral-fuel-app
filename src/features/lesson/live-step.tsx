@@ -14,17 +14,17 @@ export function LiveStep({ step }: { step: LiveContent }) {
   const { colors } = useTheme();
   return (
     <View style={styles.stack}>
-      <Card tone="primary">
+      <Card tone="feature">
         <View style={styles.title}>
-          <Icon name="walk" size={20} color={colors.onPrimary} />
-          <AppText variant="overline" tone="onPrimaryMuted">
+          <Icon name="walk" size={20} color={colors.accent} />
+          <AppText variant="overline" tone="muted">
             {strings.lesson.actionTitle}
           </AppText>
         </View>
-        <AppText variant="title" tone="onPrimary">
+        <AppText variant="title">
           {step.action.title}
         </AppText>
-        <AppText tone="onPrimary">{step.action.description}</AppText>
+        <AppText tone="muted">{step.action.description}</AppText>
       </Card>
 
       {step.prayer ? (

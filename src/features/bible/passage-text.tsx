@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { BGT } from '@/content/bible';
 import type { BiblePassage, BibleTextBlock } from '@/models/bible';
 import { useStrings } from '@/state/app-state';
-import { spacing } from '@/theme/tokens';
+import { fonts, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/use-theme';
 import { Button } from '@/ui/button';
 import { AppText } from '@/ui/text';
@@ -79,6 +79,6 @@ const styles = StyleSheet.create({
   missing: { gap: spacing.md },
   break: { height: spacing.md },
   poetry: { paddingLeft: spacing.md },
-  verse: { fontSize: 12, fontWeight: '700' },
+  verse: { fontSize: 12, fontFamily: fonts.semibold },
   source: { marginTop: spacing.lg },
 });

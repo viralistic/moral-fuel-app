@@ -63,7 +63,7 @@ export function ExploreScreen() {
 
       {results.length === 0 ? (
         <View style={[styles.empty, { borderColor: colors.border }]}>
-          <Icon name="search" size={28} color={colors.sage} />
+          <Icon name="search" size={28} color={colors.textMuted} />
           <AppText variant="heading">{strings.explore.emptyTitle}</AppText>
           <AppText tone="muted" style={styles.center}>
             {query.trim() ? strings.explore.emptyQuery(query.trim()) : strings.explore.emptyFilter}

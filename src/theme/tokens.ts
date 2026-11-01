@@ -1,79 +1,97 @@
 import type { TextStyle } from 'react-native';
 
-/** Brand palette. Screens use the semantic colors below, never these directly. */
+/**
+ * Brand palette (see styling/STYLE_GUIDE.md). Screens use the semantic colors below, never these
+ * directly. The brand is dark-only: one calm charcoal canvas, white type, and a single ember accent.
+ */
 export const palette = {
-  ivory: '#F7F4ED',
-  forest: '#244737',
-  sage: '#A6B9A7',
-  gold: '#D5AE6B',
-  charcoal: '#222725',
+  night: '#1F1E1F',
+  ink: '#171617',
+  graphite: '#262526',
+  slate: '#2C2B2C',
+  smoke: '#333233',
+  steel: '#3A393A',
+  iron: '#6E6C6E',
+  ash: '#A3A1A3',
+  chalk: '#F5F3F5',
   white: '#FFFFFF',
+  ember: '#E2572B',
+  emberLight: '#EE7748',
+  emberDeep: '#3A2520',
+  coral: '#F28B7B',
 } as const;
 
 export interface ColorTokens {
+  /** The page canvas. */
   background: string;
+  /** Cards and grouped rows. */
   surface: string;
+  /** The one featured card on a screen (today's lesson, the action to live). */
+  surfaceRaised: string;
+  /** Pressed rows, icon wells, quiet panels. */
   surfaceMuted: string;
+  /** A selected option or filled track. */
+  selected: string;
+  /** Hairlines and card edges (decorative). */
   border: string;
+  /** Outlines that mark a control: inputs, outline buttons, progress tracks (3:1 on the canvas). */
+  borderStrong: string;
   text: string;
   textMuted: string;
+  /** Filled buttons, done markers and progress fills: white on charcoal. */
   primary: string;
   onPrimary: string;
-  onPrimaryMuted: string;
+  /** Ember: indicators, rules, dots and icons. Use sparingly, one focal point per screen. */
   accent: string;
+  /** Ember for text, readable on every surface. */
   accentText: string;
-  sage: string;
-  sageSoft: string;
+  /** A faint ember wash behind accent icons. */
+  accentSoft: string;
+  /** The giant logotype watermark, just darker than the canvas. */
+  watermark: string;
   danger: string;
   focus: string;
 }
 
-export const lightColors: ColorTokens = {
-  background: palette.ivory,
-  surface: palette.white,
-  surfaceMuted: '#EFEADF',
-  border: '#E2DCCF',
-  text: palette.charcoal,
-  textMuted: '#59615C',
-  primary: palette.forest,
-  onPrimary: palette.white,
-  onPrimaryMuted: '#C9D6CA',
-  accent: palette.gold,
-  accentText: '#85601E',
-  sage: palette.sage,
-  sageSoft: '#E1E8DF',
-  danger: '#A23B2A',
-  focus: palette.gold,
-};
-
-export const darkColors: ColorTokens = {
-  background: '#121815',
-  surface: '#1A221E',
-  surfaceMuted: '#222C27',
-  border: '#2E3A34',
-  text: '#F1EDE4',
-  textMuted: '#AEB8B1',
-  primary: '#B9CBBA',
-  onPrimary: '#13201A',
-  onPrimaryMuted: '#3D5446',
-  accent: palette.gold,
-  accentText: '#E0C38F',
-  sage: palette.sage,
-  sageSoft: '#26322C',
-  danger: '#E8907E',
-  focus: palette.gold,
+export const colors: ColorTokens = {
+  background: palette.night,
+  surface: palette.graphite,
+  surfaceRaised: palette.slate,
+  surfaceMuted: palette.smoke,
+  selected: palette.smoke,
+  border: palette.steel,
+  borderStrong: palette.iron,
+  text: palette.white,
+  textMuted: palette.ash,
+  primary: palette.chalk,
+  onPrimary: palette.night,
+  accent: palette.ember,
+  accentText: palette.emberLight,
+  accentSoft: palette.emberDeep,
+  watermark: palette.ink,
+  danger: palette.coral,
+  focus: palette.ember,
 };
 
 export const spacing = { xxs: 4, xs: 8, sm: 12, md: 16, lg: 24, xl: 32, xxl: 48 } as const;
-export const radius = { sm: 10, md: 16, lg: 24, pill: 999 } as const;
+export const radius = { sm: 10, md: 14, lg: 18, pill: 999 } as const;
 
 /** Readable column width on tablets and the web. */
 export const MAX_CONTENT_WIDTH = 640;
 
+/**
+ * Font families, loaded in src/app/_layout.tsx. Custom fonts ignore fontWeight on Android, so a
+ * weight is always chosen by family name, never with fontWeight.
+ */
 export const fonts = {
-  serif: 'Newsreader_500Medium',
-  serifRegular: 'Newsreader_400Regular',
-  serifItalic: 'Newsreader_400Regular_Italic',
+  /** Tomorrow: headings and big numbers. */
+  display: 'Tomorrow_600SemiBold',
+  /** Poppins: everything else. */
+  light: 'Poppins_300Light',
+  lightItalic: 'Poppins_300Light_Italic',
+  regular: 'Poppins_400Regular',
+  medium: 'Poppins_500Medium',
+  semibold: 'Poppins_600SemiBold',
 } as const;
 
 export type TextVariant =
@@ -89,14 +107,14 @@ export type TextVariant =
   | 'overline';
 
 export const typography: Record<TextVariant, TextStyle> = {
-  display: { fontFamily: fonts.serif, fontSize: 34, lineHeight: 40, letterSpacing: -0.4 },
-  title: { fontFamily: fonts.serif, fontSize: 27, lineHeight: 33, letterSpacing: -0.2 },
-  heading: { fontFamily: fonts.serif, fontSize: 21, lineHeight: 27 },
-  quote: { fontFamily: fonts.serifItalic, fontSize: 21, lineHeight: 30 },
-  scripture: { fontFamily: fonts.serif, fontSize: 19, lineHeight: 31 },
-  body: { fontSize: 17, lineHeight: 26 },
-  bodyStrong: { fontSize: 17, lineHeight: 26, fontWeight: '600' },
-  small: { fontSize: 15, lineHeight: 22 },
-  caption: { fontSize: 13, lineHeight: 18 },
-  overline: { fontSize: 12, lineHeight: 16, fontWeight: '600', letterSpacing: 1.4, textTransform: 'uppercase' },
+  display: { fontFamily: fonts.display, fontSize: 34, lineHeight: 40, letterSpacing: 0.6 },
+  title: { fontFamily: fonts.display, fontSize: 26, lineHeight: 32, letterSpacing: 0.4 },
+  heading: { fontFamily: fonts.display, fontSize: 20, lineHeight: 26, letterSpacing: 0.3 },
+  quote: { fontFamily: fonts.lightItalic, fontSize: 18, lineHeight: 28 },
+  scripture: { fontFamily: fonts.regular, fontSize: 17, lineHeight: 29 },
+  body: { fontFamily: fonts.regular, fontSize: 16, lineHeight: 25 },
+  bodyStrong: { fontFamily: fonts.medium, fontSize: 16, lineHeight: 25 },
+  small: { fontFamily: fonts.light, fontSize: 14, lineHeight: 21 },
+  caption: { fontFamily: fonts.regular, fontSize: 13, lineHeight: 18 },
+  overline: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, letterSpacing: 1.6, textTransform: 'uppercase' },
 };

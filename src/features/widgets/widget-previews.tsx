@@ -17,9 +17,8 @@ const SMALL = 150;
 const WIDE = 320;
 
 function Frame({ size, tone, children }: { size: 'small' | 'medium' | 'large' | 'lock'; tone: 'ivory' | 'forest' | 'white'; children: ReactNode }) {
-  const { colors, scheme } = useTheme();
-  const dark = scheme === 'dark';
-  const background = { ivory: colors.background, forest: dark ? colors.surface : colors.primary, white: colors.surface }[tone];
+  const { colors } = useTheme();
+  const background = { ivory: colors.background, forest: colors.surfaceRaised, white: colors.surface }[tone];
   const dims = {
     small: { width: SMALL, height: SMALL },
     medium: { width: WIDE, height: SMALL },
@@ -36,16 +35,14 @@ function Frame({ size, tone, children }: { size: 'small' | 'medium' | 'large' | 
   );
 }
 
-function Line({ children, size = 11, serif, tone = 'muted', lines, onDark }: { children: ReactNode; size?: number; serif?: boolean; tone?: 'ink' | 'muted' | 'gold'; lines?: number; onDark?: boolean }) {
+function Line({ children, size = 11, serif, tone = 'muted', lines }: { children: ReactNode; size?: number; serif?: boolean; tone?: 'ink' | 'muted' | 'gold'; lines?: number }) {
   const { colors } = useTheme();
-  const color = onDark
-    ? { ink: colors.onPrimary, muted: colors.onPrimaryMuted, gold: colors.accent }[tone]
-    : { ink: colors.text, muted: colors.textMuted, gold: colors.accentText }[tone];
+  const color = { ink: colors.text, muted: colors.textMuted, gold: colors.accentText }[tone];
   return (
     <AppText
       numberOfLines={lines}
       maxFontSizeMultiplier={1.2}
-      style={{ fontSize: size, lineHeight: Math.round(size * 1.3), color, fontFamily: serif ? fonts.serifRegular : undefined, fontWeight: tone === 'gold' ? '600' : undefined }}>
+      style={{ fontSize: size, lineHeight: Math.round(size * 1.3), color, fontFamily: serif ? fonts.display : tone === 'gold' ? fonts.semibold : fonts.regular }}>
       {children}
     </AppText>
   );
@@ -68,12 +65,12 @@ export function ProgressPreview({ bundle }: { bundle: WidgetBundle }) {
   const { progress, labels } = bundle.progress;
   return (
     <Frame size="medium" tone="forest">
-      <Line tone="gold" size={9} onDark>{labels.brand}</Line>
-      <Line serif tone="ink" size={18} onDark>{`${progress.completed}/${progress.total} ${labels.lessons}`}</Line>
-      <Line size={11} onDark>{progress.state === 'new' ? labels.start : `${progress.percent}% ${labels.completed} · ${progress.chapter}`}</Line>
+      <Line tone="gold" size={9}>{labels.brand}</Line>
+      <Line serif tone="ink" size={18}>{`${progress.completed}/${progress.total} ${labels.lessons}`}</Line>
+      <Line size={11}>{progress.state === 'new' ? labels.start : `${progress.percent}% ${labels.completed} · ${progress.chapter}`}</Line>
       <View style={styles.push} />
-      <ProgressBar value={progress.completed} max={progress.total} label={`${progress.percent}%`} onPrimary />
-      {progress.next ? <Line size={11} tone="ink" lines={1} onDark>{`${labels.next}: ${progress.next.day}. ${progress.next.title}`}</Line> : null}
+      <ProgressBar value={progress.completed} max={progress.total} label={`${progress.percent}%`} />
+      {progress.next ? <Line size={11} tone="ink" lines={1}>{`${labels.next}: ${progress.next.day}. ${progress.next.title}`}</Line> : null}
     </Frame>
   );
 }

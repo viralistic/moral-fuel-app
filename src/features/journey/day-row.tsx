@@ -5,7 +5,7 @@ import { topicLabel, type DayView } from '@/content';
 import { useOpenLesson } from '@/features/lesson/use-open-lesson';
 import { dayStatus, type DayStatus } from '@/features/progress/progress';
 import { useAppState, useStrings } from '@/state/app-state';
-import { radius, spacing } from '@/theme/tokens';
+import { fonts, radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/use-theme';
 import { Badge } from '@/ui/badge';
 import { Icon } from '@/ui/icon';
@@ -59,7 +59,7 @@ export function DayRow({ day, showTopics, recommended }: { day: DayView; showTop
           </AppText>
         ) : null}
         {showTopics ? (
-          <AppText variant="caption" tone="accent">
+          <AppText variant="caption" tone="muted">
             {day.topics.map((t) => topicLabel(t, state.preferences.language)).join(' · ')}
           </AppText>
         ) : null}
@@ -121,7 +121,7 @@ function useBadge(status: DayStatus, step: number) {
     case 'completed':
       return { label: strings.common.completed, tone: 'done', icon: 'check' } as const;
     case 'in-progress':
-      return { label: strings.common.inProgress(step), tone: 'active' } as const;
+      return { label: strings.common.inProgress(step), tone: 'neutral' } as const;
     case 'available':
       return { label: strings.common.available, tone: 'neutral' } as const;
     case 'coming-soon':
@@ -148,12 +148,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 2,
   },
-  markerText: { fontWeight: '600' },
+  markerText: { fontFamily: fonts.semibold },
   text: { flex: 1, gap: spacing.xxs },
   badges: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
   title: { fontSize: 19, lineHeight: 25 },
   objectiveToggle: { marginLeft: 36 + spacing.md + spacing.xs, minHeight: 32, justifyContent: 'center', alignSelf: 'flex-start' },
-  toggleText: { fontWeight: '600' },
+  toggleText: { fontFamily: fonts.medium },
   objective: {
     marginLeft: 36 + spacing.md + spacing.xs,
     borderLeftWidth: 2,

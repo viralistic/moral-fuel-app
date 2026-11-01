@@ -95,9 +95,10 @@ with name and date (see `src/content/review.ts`). See `AGENTS.md` for the conten
 
 ## Design
 
-Calm, editorial and warm: ivory background, forest green, muted sage, warm gold and charcoal, with the
-Newsreader serif for headings and the system font for reading. Light and dark mode, safe areas, large
-touch targets, screen-reader labels, scaling text and reduced-motion support. No streaks.
+Dark and quiet: a charcoal canvas, white type and a single ember accent, the MoralFuel logotype, Tomorrow
+for headings and Poppins for text, and black-and-white photography. A branded loader follows the splash.
+Safe areas, large touch targets, screen-reader labels, scaling text and reduced-motion support. No
+streaks. The rules and the designer's mockups are in `styling/`.
 
 ## Manual test paths
 
@@ -133,4 +134,4 @@ touch targets, screen-reader labels, scaling text and reduced-motion support. No
 - One lesson length for all time preferences (see AGENTS.md).
 - Reminders are not available on the web; the journal is not saved on the web.
 - An Expo account (and Apple Developer membership for iPhones) is still needed for EAS development builds.
-- The app icon and splash image are still the Expo template's placeholders.
+- The app icon is still the Expo template's placeholder (the splash shows the logo).

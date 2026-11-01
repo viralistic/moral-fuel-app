@@ -15,11 +15,10 @@ import type { JourneyProgressWidgetData } from '@/features/widgets/widget-data';
 /** Widget B, journey progress: real completed lessons from the app, never a date-based count. */
 const JourneyProgress = (props: JourneyProgressWidgetData, env: WidgetEnvironment) => {
   'widget';
-  const dark = env.colorScheme === 'dark';
-  const bg = dark ? '#1A221E' : '#244737';
-  const ink = dark ? '#F1EDE4' : '#FFFFFF';
-  const muted = dark ? '#AEB8B1' : '#C9D6CA';
-  const gold = '#D5AE6B';
+  const bg = '#2C2B2C';
+  const ink = '#FFFFFF';
+  const muted = '#A3A1A3';
+  const gold = '#E2572B';
   const p = props.progress;
   const count = `${p.completed}/${p.total}`;
   const headline = p.state === 'new' ? props.labels.start : p.state === 'done' ? props.labels.allDone : `${p.percent}% ${props.labels.completed}`;
@@ -42,7 +41,7 @@ const JourneyProgress = (props: JourneyProgressWidgetData, env: WidgetEnvironmen
   const details = (
     <VStack alignment="leading" spacing={4}>
       <Text modifiers={[font({ size: 10, weight: 'semibold' }), foregroundStyle(gold)]}>{props.labels.brand}</Text>
-      <Text modifiers={[font({ size: 20, design: 'serif' }), foregroundStyle(ink)]}>
+      <Text modifiers={[font({ size: 20 }), foregroundStyle(ink)]}>
         {count} {props.labels.lessons}
       </Text>
       <Text modifiers={[font({ size: 12 }), foregroundStyle(muted)]}>{headline}</Text>

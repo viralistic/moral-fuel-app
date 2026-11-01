@@ -16,12 +16,11 @@ import type { DashboardWidgetData } from '@/features/widgets/widget-data';
 /** Widget D, the daily dashboard: inspiration, journey position and today's action at a glance. */
 const Dashboard = (props: DashboardWidgetData, env: WidgetEnvironment) => {
   'widget';
-  const dark = env.colorScheme === 'dark';
-  const bg = dark ? '#121815' : '#F7F4ED';
-  const ink = dark ? '#F1EDE4' : '#222725';
-  const muted = dark ? '#AEB8B1' : '#59615C';
-  const gold = dark ? '#E0C38F' : '#85601E';
-  const ring = '#D5AE6B';
+  const bg = '#1F1E1F';
+  const ink = '#FFFFFF';
+  const muted = '#A3A1A3';
+  const gold = '#EE7748';
+  const ring = '#E2572B';
   const p = props.progress;
   const position = p.next ? `${props.labels.next}: ${p.next.day}` : p.state === 'done' ? props.labels.allDone : props.labels.start;
 
@@ -30,7 +29,7 @@ const Dashboard = (props: DashboardWidgetData, env: WidgetEnvironment) => {
       <HStack spacing={14} modifiers={[containerBackground(bg, 'widget'), widgetURL(props.link)]}>
         <VStack alignment="leading" spacing={5}>
           <Text modifiers={[font({ size: 10, weight: 'semibold' }), foregroundStyle(gold)]}>{props.labels.brand}</Text>
-          <Text modifiers={[font({ size: 15, design: 'serif' }), foregroundStyle(ink), lineLimit(3), minimumScaleFactor(0.85)]}>
+          <Text modifiers={[font({ size: 15 }), foregroundStyle(ink), lineLimit(3), minimumScaleFactor(0.85)]}>
             {props.inspiration.text}
           </Text>
           <Spacer />
@@ -53,7 +52,7 @@ const Dashboard = (props: DashboardWidgetData, env: WidgetEnvironment) => {
         <Spacer />
         <Text modifiers={[font({ size: 11 }), foregroundStyle(muted)]}>{p.chapter}</Text>
       </HStack>
-      <Text modifiers={[font({ size: 19, design: 'serif' }), foregroundStyle(ink), lineLimit(4), minimumScaleFactor(0.85)]}>
+      <Text modifiers={[font({ size: 19 }), foregroundStyle(ink), lineLimit(4), minimumScaleFactor(0.85)]}>
         {props.inspiration.text}
       </Text>
       <Text modifiers={[font({ size: 11, weight: 'medium' }), foregroundStyle(muted)]}>

@@ -38,7 +38,9 @@ export function TodayScreen() {
   return (
     <Screen inTabs>
       <View style={styles.header}>
-        <Wordmark />
+        <View style={styles.brand}>
+          <Wordmark />
+        </View>
         <AppText variant="display">{greetingFor(new Date().getHours(), strings)}</AppText>
         {shownDay && section ? (
           <AppText tone="muted">{strings.today.dayLine(shownDay.day, position.totalDays, section.title)}</AppText>
@@ -84,7 +86,7 @@ export function TodayScreen() {
       {live?.kind === 'live' ? (
         <FadeIn delay={140}>
           <View style={[styles.action, { borderColor: colors.border }]}>
-            <View style={[styles.actionIcon, { backgroundColor: colors.sageSoft }]}>
+            <View style={[styles.actionIcon, { backgroundColor: colors.accentSoft }]}>
               <Icon name="walk" size={20} color={colors.primary} />
             </View>
             <View style={styles.actionText}>
@@ -206,6 +208,7 @@ function EntryLink({ icon, title, hint, onPress }: { icon: IconName; title: stri
 
 const styles = StyleSheet.create({
   header: { gap: spacing.xs, paddingTop: spacing.sm },
+  brand: { paddingBottom: spacing.md },
   quoteBlock: { gap: spacing.sm, paddingVertical: spacing.xs },
   quote: { borderLeftWidth: 2, paddingLeft: spacing.md },
   action: { flexDirection: 'row', gap: spacing.md, borderTopWidth: StyleSheet.hairlineWidth, borderBottomWidth: StyleSheet.hairlineWidth, paddingVertical: spacing.lg },

@@ -21,12 +21,11 @@ type Config = { theme: string };
  */
 const DailyInspiration = (props: DailyInspirationWidgetData, env: WidgetEnvironment<Config>) => {
   'widget';
-  const dark = env.colorScheme === 'dark';
-  const bg = dark ? '#121815' : '#F7F4ED';
-  const ink = dark ? '#F1EDE4' : '#222725';
-  const muted = dark ? '#AEB8B1' : '#59615C';
-  const gold = dark ? '#E0C38F' : '#85601E';
-  const rule = '#D5AE6B';
+  const bg = '#1F1E1F';
+  const ink = '#FFFFFF';
+  const muted = '#A3A1A3';
+  const gold = '#EE7748';
+  const rule = '#E2572B';
   const chosen = env.configuration?.theme as keyof DailyInspirationWidgetData['byTheme'] | undefined;
   const item = (chosen && props.byTheme[chosen]) || props.byTheme.all;
 
@@ -34,7 +33,7 @@ const DailyInspiration = (props: DailyInspirationWidgetData, env: WidgetEnvironm
     return (
       <VStack alignment="leading" spacing={6} modifiers={[containerBackground(bg, 'widget'), widgetURL(item.link)]}>
         <Text modifiers={[font({ size: 10, weight: 'semibold' }), foregroundStyle(gold)]}>{props.labels.brand}</Text>
-        <Text modifiers={[font({ size: 15, design: 'serif' }), foregroundStyle(ink), lineLimit(5), minimumScaleFactor(0.8)]}>
+        <Text modifiers={[font({ size: 15 }), foregroundStyle(ink), lineLimit(5), minimumScaleFactor(0.8)]}>
           {item.text}
         </Text>
         <Spacer />
@@ -55,7 +54,7 @@ const DailyInspiration = (props: DailyInspirationWidgetData, env: WidgetEnvironm
             <Spacer />
             <Text modifiers={[font({ size: 10 }), foregroundStyle(muted)]}>{item.themeLabel}</Text>
           </HStack>
-          <Text modifiers={[font({ size: 17, design: 'serif' }), foregroundStyle(ink), lineLimit(4), minimumScaleFactor(0.8)]}>
+          <Text modifiers={[font({ size: 17 }), foregroundStyle(ink), lineLimit(4), minimumScaleFactor(0.8)]}>
             {item.text}
           </Text>
           <Spacer />
@@ -75,7 +74,7 @@ const DailyInspiration = (props: DailyInspirationWidgetData, env: WidgetEnvironm
         <Spacer />
         <Text modifiers={[font({ size: 11 }), foregroundStyle(muted)]}>{props.labels.inspiration}</Text>
       </HStack>
-      <Text modifiers={[font({ size: 22, design: 'serif' }), foregroundStyle(ink), lineLimit(6), minimumScaleFactor(0.8)]}>
+      <Text modifiers={[font({ size: 22 }), foregroundStyle(ink), lineLimit(6), minimumScaleFactor(0.8)]}>
         {item.text}
       </Text>
       <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(muted)]}>

@@ -1,9 +1,8 @@
 import { StyleSheet, View } from 'react-native';
 
 import { useStrings } from '@/state/app-state';
-import { spacing } from '@/theme/tokens';
+import { radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/use-theme';
-import { Card } from '@/ui/card';
 import { Icon } from '@/ui/icon';
 import { AppText } from '@/ui/text';
 import { Wordmark } from '@/ui/wordmark';
@@ -17,23 +16,29 @@ export function WelcomeStep({ onNext }: { onNext: () => void }) {
 
   return (
     <StepFrame step={0} onBack={() => {}} ctaLabel={welcome.cta} onCta={onNext}>
-      <Card tone="primary" style={styles.hero}>
-        <Wordmark onPrimary />
-        <AppText variant="overline" tone="onPrimaryMuted">
+      <View style={styles.hero}>
+        <Wordmark width={176} />
+        <AppText variant="overline" tone="muted">
           {strings.brand.promise}
         </AppText>
-        <AppText variant="display" tone="onPrimary">
-          {welcome.title}
+        <AppText variant="display">{welcome.title}</AppText>
+        <AppText variant="small" tone="muted">
+          {welcome.body}
         </AppText>
-        <AppText tone="onPrimaryMuted">{welcome.body}</AppText>
-      </Card>
+      </View>
 
       <View style={styles.points}>
         {welcome.points.map((point, index) => (
-          <View key={point.title} style={styles.point} accessible accessibilityLabel={`${point.title}. ${point.body}`}>
-            <AppText variant="heading" tone="accent" style={styles.pointIndex}>
-              {index + 1}
-            </AppText>
+          <View
+            key={point.title}
+            style={[styles.point, { backgroundColor: colors.surface, borderColor: colors.border }]}
+            accessible
+            accessibilityLabel={`${point.title}. ${point.body}`}>
+            <View style={[styles.pointIndex, { backgroundColor: colors.surfaceMuted }]}>
+              <AppText variant="heading" tone="accent">
+                {index + 1}
+              </AppText>
+            </View>
             <View style={styles.pointText}>
               <AppText variant="heading">{point.title}</AppText>
               <AppText variant="small" tone="muted">
@@ -55,10 +60,10 @@ export function WelcomeStep({ onNext }: { onNext: () => void }) {
 }
 
 const styles = StyleSheet.create({
-  hero: { padding: spacing.xl, gap: spacing.md },
-  points: { gap: spacing.md },
-  point: { flexDirection: 'row', gap: spacing.md, alignItems: 'flex-start' },
-  pointIndex: { width: 28 },
+  hero: { gap: spacing.md, paddingTop: spacing.md, paddingBottom: spacing.xs },
+  points: { gap: spacing.sm },
+  point: { flexDirection: 'row', gap: spacing.md, alignItems: 'center', borderWidth: 1, borderRadius: radius.md, padding: spacing.md },
+  pointIndex: { width: 44, height: 44, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center' },
   pointText: { flex: 1, gap: 2 },
   note: { flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-start' },
   noteText: { flex: 1 },
