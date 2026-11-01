@@ -5,6 +5,9 @@ Ready-to-paste texts and answers for App Store Connect (language: Dutch). Charac
 
 ## Before you submit
 
+The owner runs `npm run publiceer` on a Mac: it walks through the Bible text, the checks and the EAS build
+with upload to TestFlight (`scripts/publiceer.sh`).
+
 - [ ] Build from the copy with the real BGT text in `src/content/bible/bgt.json` (this public repo has
       placeholders).
 - [ ] The app shows a beta notice because the lessons are unreviewed drafts. Apple does not accept beta

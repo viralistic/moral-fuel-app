@@ -65,6 +65,7 @@
     "bible:import": "tsx scripts/bible/import-bgt.ts",
     "bible:validate": "tsx scripts/bible/validate.ts",
     "bible:coverage": "tsx scripts/bible/coverage.ts",
+    "publiceer": "bash scripts/publiceer.sh",
     "preflight": "npm run typecheck && npm run lint && npm test && npx --yes expo-doctor",
     "iphone:login": "npx --yes eas-cli@25 login",
     "iphone:init": "npx --yes eas-cli@25 init",

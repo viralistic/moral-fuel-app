@@ -112,6 +112,7 @@ npm run doctor       # expo-doctor
 npm run bible:import # BGT chapter pages in bible-sources/bgt -> src/content/bible/bgt.json + reports
 npm run bible:validate  # re-check the bundled BGT text against its pages; exit 1 on problems
 npm run bible:coverage  # which lesson references can show their text
+npm run publiceer       # owner's guided wizard (macOS): real BGT text kept out of git, checks, EAS build to TestFlight
 ```
 
 The BGT pipeline, the page structure it relies on and how to add chapters are in `BGT_INTEGRATION.md`.
